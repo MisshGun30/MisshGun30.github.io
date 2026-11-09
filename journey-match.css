@@ -1,0 +1,129 @@
+/* Ночной вариант того же сада: приглушённая бумага и тёплый свет спички. */
+body.in-journey { --ink:#ead7bc; --muted:#bca995; --rose:#ddb184; --line:#e4bd8c30; background:#241d22; color:var(--ink); }
+body.in-journey .garden { background:#211a20; }
+body.in-journey .garden>img { opacity:.08; filter:none; }
+body.in-journey .home-lantern { visibility:hidden; }
+body.in-journey .garden-haze { background:linear-gradient(180deg,#241d22f5,#312324db 65%,#21191eea); }
+body.in-journey .site-header,body.in-journey .site-footer { color:#c7b29b; }
+body.in-journey #petals,body.in-journey #petals-back { opacity:.12; }
+body.in-journey .journey-map { background:radial-gradient(ellipse at 18% 45%,#8061431f,transparent 50%),radial-gradient(ellipse at 85% 60%,#83664c1a,transparent 55%); }
+body.in-journey .trail-edge { stroke:#71604f; opacity:.65; }
+body.in-journey .trail-center { stroke:#615347; }
+body.in-journey .journey-stone { color:#d6bd9a; background:linear-gradient(145deg,#80705f,#5c4c47); box-shadow:0 6px 12px #0003,inset 0 1px 2px #f1d7ac36; }
+body.in-journey .journey-card { color:#352924; background:#b9a58b; border-color:#dbc19966; box-shadow:2px 9px 24px #0005; transition:background .35s,box-shadow .35s,transform .35s; }
+body.in-journey .journey-map .journey-photo { color:#e3c9a5; background:linear-gradient(145deg,#77695c,#66574e); }
+body.in-journey .journey-map .journey-photo-sketch { color:#c7a985; }
+body.in-journey .journey-card-period,body.in-journey .journey-read { color:#5a4035; }
+body.in-journey .journey-card:is(:hover,:focus-visible,.is-match-lit) { background:#f0dbb6; box-shadow:0 0 38px #edac6130,3px 12px 28px #0005; }
+body.in-journey .journey-card:is(:hover,:focus-visible,.is-match-lit) .journey-photo { background:linear-gradient(145deg,#aa9070,#8c715d); color:#fff0cf; }
+body.in-journey .section-heading h1 { color:#e8ceaa; }
+.journey-trail-responsive { display:none; }
+
+.journey-match { --burn-offset:0px; position:fixed; left:0; top:0; width:64px; height:166px; z-index:8; pointer-events:none; opacity:0; transition:translate .07s linear,opacity .6s; }
+body.match-is-lit .journey-match { opacity:1; }
+.journey-match svg { position:relative; width:100%; height:100%; overflow:visible; transform:rotate(-12deg); }
+.match-aura { position:absolute; left:-420px; top:calc(-410px + var(--burn-offset)); width:900px; height:900px; border-radius:50%; background:radial-gradient(ellipse,#ffbd6338 0%,#e7a05716 24%,#bd7c3b08 48%,transparent 69%); transition:opacity .5s,scale .5s; }
+.journey-match.is-near-card .match-aura { scale:1.12; opacity:1; background:radial-gradient(ellipse,#ffca7b50 0%,#efb36c1e 27%,#c68d5309 48%,transparent 69%); }
+.match-flame { transform-origin:32px 52px; animation:match-flicker 1.6s ease-in-out infinite alternate; }
+.journey-match.is-out { opacity:0 !important; }
+.match-light-field { position:fixed; left:0; top:0; width:0; height:0; z-index:6; pointer-events:none; transition:translate .07s linear; }
+.match-shade { position:absolute; left:-700px; top:-700px; width:1400px; height:1400px; background:radial-gradient(circle,transparent 0 75px,#08060930 155px,#080609ba 325px,#080609ed 540px,#080609f5 700px); }
+/* Четыре простых прямоугольника вне пятна: без огромной размытой тени. */
+.match-curtain { position:absolute; background:#080609f5; }
+.curtain-top,.curtain-bottom { left:-200vw; width:400vw; height:200vh; }
+.curtain-top { bottom:700px; }
+.curtain-bottom { top:700px; }
+.curtain-left,.curtain-right { top:-700px; width:200vw; height:1400px; }
+.curtain-left { right:700px; }
+.curtain-right { left:700px; }
+.match-smoke { opacity:0; }
+.match-blowing .match-burning { opacity:0; transition:opacity .3s; }
+.match-blowing .match-aura { opacity:0; }
+.match-blowing .match-smoke { animation:match-smoke .65s ease-out both; }
+@keyframes match-smoke { 0% { opacity:0; translate:0 0; } 25% { opacity:.5; } 100% { opacity:0; translate:18px -30px; } }
+@keyframes match-flicker { 0%,100% { transform:scale(.94,1) rotate(-3deg); opacity:.92; } 32% { transform:scale(1.05,.94) rotate(2deg); opacity:1; } 67% { transform:scale(.96,1.06) rotate(-1deg); opacity:.95; } }
+.match-eclipse { position:fixed; inset:0; margin:0; padding:0; width:100vw; height:100svh; max-width:none; max-height:none; background:#000; border:0; outline:0; }
+.match-eclipse::backdrop { background:#000; backdrop-filter:none; }
+body.in-journey .journey-dialog { background-color:#dcc4a1; color:#392c27; border-color:#b79a72; box-shadow:0 25px 100px #0008; }
+body.in-journey .journey-dialog::backdrop { background:#0c090de8; backdrop-filter:blur(5px); }
+body.in-journey .journey-reader-bar { color:#684c3c; background:#dcc4a1f5; border-color:#96735650; }
+body.in-journey .journey-reader-photo { background:#e8d4b6; }
+body.in-journey .journey-story .journey-card-period,body.in-journey .journey-reader-nav,body.in-journey .journey-story-links a { color:#714c35; }
+body.in-journey .journey-reader-nav { border-color:#96735650; }
+body.in-journey .journey-dialog .journey-match { z-index:5; }
+body.in-journey .journey-dialog .match-light-field { z-index:4; }
+.journey-dialog .reader-light-field { display:none; }
+.journey-match.reader-pinned { transition:opacity .3s; }
+.journey-match.match-transferring { transition: opacity .3s; will-change: translate; }
+.journey-match.reader-pinned .match-aura { opacity:.65; }
+body.in-journey .journey-dialog.reader-lit { background-color:#baa184; background-image:radial-gradient(ellipse at 0 0,#fff0c9f5 0%,#e1c6a6ba 42%,#c3a78630 100%),url('assets/images/paper-fibers.svg'); }
+.journey-dialog.reader-lit .journey-reader-bar { padding-left:68px; }
+body.in-journey .journey-reader-count { color:#3f2c20; background:#f4dfb9; border:1px solid #94704c; border-radius:20px; padding:7px 14px; font-size:13px; font-weight:600; font-variant-numeric:tabular-nums; }
+body.in-journey .journey-story .journey-card-period { color:#503622; font-weight:600; }
+.journey-photo { padding:0 !important; overflow:hidden; }
+.journey-photo img { display:block; width:100%; height:100%; object-fit:cover; object-position:50% 38%; }
+.journey-reader-photo>.journey-photo { aspect-ratio:auto; background:#6b5b4b; }
+.journey-reader-photo>.journey-photo img { height:auto; max-height:60svh; object-fit:contain; }
+.journey-extra-photos { display:grid; grid-template-columns:1fr 1fr; align-items:start; }
+.journey-extra-photos figure { min-width:0; }
+.journey-extra-photos img { width:100%; height:auto; display:block; }
+.journey-extra-photos figcaption { padding:6px 2px 2px; color:#594433; font-size:10px; line-height:1.5; }
+.journey-return-veil { position:fixed; inset:0; z-index:90; background:#000; opacity:0; pointer-events:none; }
+
+/* Дорога ниже камней, пунктир между ними, карточки выше всех трёх слоёв. */
+.journey-trail { z-index:0; }
+.journey-stop { z-index:2; }
+.journey-stop .journey-stone { z-index:1; }
+.journey-stop .journey-card { z-index:2; }
+.journey-connections { position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none; overflow:visible; }
+.journey-connections path { fill:none; stroke:#d5b98e; stroke-width:2; stroke-dasharray:4 9; stroke-linecap:round; opacity:.75; }
+
+/* В сжатом окне даём историям место: семь отдельных изгибов и прокрутка. */
+@media(max-width:1100px) {
+  body.in-journey .section-view { padding:4px 6% 35px; }
+  body.in-journey .section-heading { display:block; margin:15px 0 20px; }
+  body.in-journey .section-heading h1 { font-size:clamp(36px,6vw,54px); margin-bottom:12px; }
+  body.in-journey .section-heading>p:last-child { font-size:12px; }
+  .journey-intro { max-width:500px; font-size:13px; line-height:1.8; }
+  .journey-intro p:first-child { display:block; }
+  .journey-intro p+p { font-size:12px; margin-top:6px; }
+  .journey-map { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); row-gap:115px; height:auto; min-height:0; max-height:none; padding:60px 0 160px; margin-top:35px; perspective:none; }
+  .journey-stop,.journey-stop:nth-of-type(even) { position:relative; grid-row:var(--path-row); grid-column:1; justify-self:center; left:auto; top:auto; margin:0; width:clamp(160px,34vw,245px); height:auto; transform:none; }
+  .journey-stop:nth-of-type(even) { grid-column:2; }
+  .journey-card { position:relative; bottom:auto; padding:10px 10px 16px; transform:rotate(var(--card-turn)); }
+  .journey-card:hover,.journey-card:focus-visible { transform:rotate(0) translateY(-4px); }
+  .journey-card h2 { font-size:clamp(18px,2.5vw,24px); line-height:1.2; }
+  .journey-map .journey-photo { height:clamp(100px,18vw,155px); font-size:12px; gap:4px; }
+  .journey-map .journey-photo-sketch { font-size:32px; }
+  .journey-map .journey-photo>span:not(.journey-photo-sketch) { display:block; }
+  .journey-map .journey-card-period { font-size:9px; margin:13px 0 7px; letter-spacing:.5px; }
+  .journey-map .journey-read { display:block; margin-top:12px; font-size:10px; }
+  .journey-stone { top:calc(100% + 19px); left:50%; width:90px; height:50px; font-size:15px; }
+  .journey-trail,.journey-trail-phone { display:none; }
+  .journey-trail-responsive { display:block; inset:0; width:100%; height:100%; }
+  .journey-trail-responsive .trail-edge { stroke-width:90; }
+  .journey-trail-responsive .trail-center { stroke-width:80; }
+  .journey-continues { bottom:8px; right:auto; left:50%; transform:translateX(-50%); font-size:16px; }
+  .journey-draft-note { margin-top:30px; font-size:11px; }
+  body.in-journey .section-nav { margin-top:35px; line-height:1.8; }
+}
+@media(max-width:480px) {
+  .journey-map { row-gap:100px; padding-top:40px; }
+  .journey-stop,.journey-stop:nth-of-type(even) { width:clamp(132px,42vw,190px); }
+  .journey-card { padding:8px 8px 14px; }
+  .journey-card h2 { font-size:18px; }
+  .journey-map .journey-photo { height:105px; }
+  .journey-map .journey-photo>span:not(.journey-photo-sketch) { font-size:10px; }
+  .journey-trail-responsive .trail-edge { stroke-width:72; }
+  .journey-trail-responsive .trail-center { stroke-width:64; }
+}
+@media(max-width:360px) {
+  .audio-controls { gap:6px; }
+  .sound-toggle { font-size:9px; }
+  #volume { width:30px; }
+}
+@media(hover:none) {
+  .match-shade { background:radial-gradient(circle,transparent 0 110px,#08060920 220px,#08060980 450px,#080609c4 700px); }
+  .match-curtain { background:#080609c4; }
+}
+@media(prefers-reduced-motion:reduce) { .journey-match { transition:opacity .1s; } .match-flame { animation:none; } }

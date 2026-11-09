@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200"><defs>
+    <radialGradient id="lantern-halo"><stop stop-color="#ffe3a3" stop-opacity=".8"/><stop offset=".35" stop-color="#ffe6b3" stop-opacity=".4"/><stop offset="1" stop-color="#ffe7bd" stop-opacity="0"/></radialGradient>
+    <radialGradient id="lantern-pool"><stop stop-color="#ffe2a1" stop-opacity=".7"/><stop offset=".55" stop-color="#ffe9bd" stop-opacity=".32"/><stop offset="1" stop-color="#fff1d6" stop-opacity="0"/></radialGradient>
+    <linearGradient id="garden-lantern-beam" x2="0" y2="1"><stop stop-color="#ffe6ae" stop-opacity=".3"/><stop offset="1" stop-color="#fff0ca" stop-opacity="0"/></linearGradient>
+    <radialGradient id="lantern-bulb-glow"><stop stop-color="#fffbdc"/><stop offset=".45" stop-color="#ffe5a5" stop-opacity=".9"/><stop offset="1" stop-color="#ffdfa0" stop-opacity="0"/></radialGradient>
+  </defs><g id="path-lantern-1" class="garden-lantern street-lantern" data-side="left" transform="translate(800 1018) scale(0.42)"><defs><linearGradient id="street-beam-0" gradientUnits="userSpaceOnUse" x1="112" y1="-266" x2="471.42857142857144" y2="-59.523809523809526"><stop stop-color="#ffe3a2" stop-opacity=".24"/><stop offset=".65" stop-color="#ffe9b5" stop-opacity=".12"/><stop offset="1" stop-color="#fff0ca" stop-opacity="0"/></linearGradient></defs><g class="lamp-emission" data-lamp-light="path-1">
+      <path d="M104 -262Q391.42857142857144 -104.52380952380952 326.42857142857144 -59.523809523809526Q471.42857142857144 -9.523809523809526 616.4285714285714 -59.523809523809526Q551.4285714285714 -104.52380952380952 120 -262Z" fill="url(#street-beam-0)"/>
+      <ellipse cx="471.42857142857144" cy="-59.523809523809526" rx="160" ry="38" fill="url(#lantern-pool)"/>
+      <ellipse cx="112" cy="-266" rx="56" ry="48" fill="url(#lantern-halo)"/>
+    </g><g class="lamp-emission"><g transform="translate(112 -266) rotate(-12)"><ellipse cy="3" rx="34" ry="15" fill="url(#lantern-bulb-glow)"/><rect x="-21" y="1" width="42" height="4" rx="2" fill="#fffbdc"/><path d="M-16 3H16" stroke="#ffe5a1" stroke-width="1"/></g></g></g></svg>

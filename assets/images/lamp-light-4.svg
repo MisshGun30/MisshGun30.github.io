@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200"><defs>
+    <radialGradient id="lantern-halo"><stop stop-color="#ffe3a3" stop-opacity=".8"/><stop offset=".35" stop-color="#ffe6b3" stop-opacity=".4"/><stop offset="1" stop-color="#ffe7bd" stop-opacity="0"/></radialGradient>
+    <radialGradient id="lantern-pool"><stop stop-color="#ffe2a1" stop-opacity=".7"/><stop offset=".55" stop-color="#ffe9bd" stop-opacity=".32"/><stop offset="1" stop-color="#fff1d6" stop-opacity="0"/></radialGradient>
+    <linearGradient id="garden-lantern-beam" x2="0" y2="1"><stop stop-color="#ffe6ae" stop-opacity=".3"/><stop offset="1" stop-color="#fff0ca" stop-opacity="0"/></linearGradient>
+    <radialGradient id="lantern-bulb-glow"><stop stop-color="#fffbdc"/><stop offset=".45" stop-color="#ffe5a5" stop-opacity=".9"/><stop offset="1" stop-color="#ffdfa0" stop-opacity="0"/></radialGradient>
+  </defs><g id="garden-lantern" class="garden-lantern" transform="translate(1221 924) scale(1)"><g class="lamp-emission" data-lamp-light="garden"><ellipse cx="0" cy="-2" rx="150" ry="34" fill="url(#lantern-pool)"/>
+    <ellipse cx="0" cy="-124" rx="90" ry="96" fill="url(#lantern-halo)"/>
+    <path d="M-17-125 95-3Q0 30-95-3Z" fill="url(#garden-lantern-beam)"/></g><g class="lamp-emission"><ellipse cx="0" cy="-125" rx="25" ry="20" fill="url(#lantern-bulb-glow)"/>
+    <path d="M-4-120c0-3-3-5-3-9a7 7 0 1 1 14 0c0 4-3 6-3 9Z" fill="#fff9d9" stroke="#efd29a" stroke-width=".8"/>
+    <path d="m-3-128 3 3 3-3M0-125v6" fill="none" stroke="#e3a557" stroke-width="1"/>
+    <path d="M-4-119h8v3h-8Z" fill="#ae9584"/></g></g></svg>

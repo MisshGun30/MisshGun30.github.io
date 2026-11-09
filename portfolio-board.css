@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+/* Общая доска вместо отдельных розовых подложек. Содержание листов прежнее. */
+.achievement-gallery.achievement-board {
+  position: relative;
+  padding: 38px 30px 32px;
+  gap: 34px 28px;
+  border: 12px solid #b49486;
+  border-radius: 3px;
+  background: #d8bfae url('assets/images/portfolio-cork.svg');
+  box-shadow: 0 14px 30px #765a6820;
+  align-items: stretch;
+}
+.achievement-board .achievement-card {
+  position: relative;
+  min-width: 0;
+  padding: 22px 17px 19px;
+  background: #fffaf3 url('assets/images/paper-fibers.svg');
+  box-shadow: 2px 7px 13px #76564f21;
+}
+.achievement-board .achievement-card::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #b37c8c;
+  box-shadow: 1px 3px 3px #61454235;
+  pointer-events: none;
+}
+.achievement-board .achievement-card:nth-child(3n+2)::before { background: #8e9e91; }
+.achievement-board .achievement-card:nth-child(3n)::before { background: #ba9a73; }
+.achievement-board .achievement-mount {
+  height: clamp(190px,19vw,250px);
+  padding: 9px 8px;
+  background: transparent;
+}
+.achievement-board .achievement-card-copy { padding-top: 15px; }
+.achievement-board .achievement-card h3 {
+  font-size: 25px;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+.achievement-board .achievement-preview-caption { font-size: 10px; }
+
+@media (max-width:1100px) {
+  .achievement-gallery.achievement-board { padding: 32px 25px 28px; gap: 30px 26px; }
+  .achievement-board .achievement-mount { height: 250px; }
+}
+@media (max-width:600px) {
+  .achievement-gallery.achievement-board {
+    margin-inline: -10px;
+    padding: 27px 14px 22px;
+    border-width: 8px;
+    gap: 30px;
+  }
+  .achievement-board .achievement-card { padding: 23px 14px 18px; }
+  .achievement-board .achievement-mount { height: 240px; padding: 6px 3px; }
+  .achievement-board .achievement-card h3 { font-size: clamp(23px,6vw,26px); }
+}
+

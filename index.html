@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="mobile-entry.js"></script>
+  <script src="garden-viewport.js"></script>
+  <meta name="theme-color" content="#fff9f7">
+  <meta name="description" content="Личный сад MishGun: немного обо мне, стихи, музыка и проекты Михаила Борознова.">
+  <title>MishGun — между кодом и стихами</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/flower.svg">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="social.css">
+  <link rel="stylesheet" href="poems.css">
+  <link rel="stylesheet" href="music.css">
+  <link rel="stylesheet" href="projects.css">
+  <link rel="stylesheet" href="project-transition.css">
+  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="portfolio-board.css">
+  <link rel="stylesheet" href="portfolio-transition.css">
+  <link rel="stylesheet" href="journey.css">
+  <link rel="stylesheet" href="lamp-transition.css">
+  <link rel="stylesheet" href="journey-match.css">
+  <noscript><style>#home[data-layout-ready="false"] { visibility: visible; }</style></noscript>
+  <script type="module" src="app-bootstrap.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <div class="garden" aria-hidden="true">
+    <img class="garden-base" src="assets/images/garden.svg" alt="">
+    <img class="home-music-props" src="assets/images/home-music-props.svg" alt="">
+    <!-- project-prop:start -->
+    <svg class="home-project-prop" viewBox="0 0 1800 1200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(1000 1044) scale(0.7)"><g id="home-project-spring"><ellipse cx="120" cy="73" rx="54" ry="9" fill="#8d7584" opacity=".15"/>
+<path d="M120 0C76 0 76 12 120 12S164 24 120 24S76 36 120 36S164 48 120 48S76 60 120 60L120 68" fill="none" stroke="#9b8693" stroke-width="6" stroke-linecap="round"/>
+<path d="M76 70h88" stroke="#ab91a0" stroke-width="7" stroke-linecap="round"/></g></g>
+      <image id="home-project-case" href="assets/images/project-case.svg" x="1000" y="932" width="168" height="112"/>
+    </svg>
+    <!-- project-prop:end -->
+    <div class="garden-haze"></div>
+    <img class="home-poem-leaves" src="assets/images/home-poem-leaves.svg" alt="">
+    <div class="home-lantern"><div class="home-lantern-plane"><img src="assets/images/garden-foreground.svg" alt=""><img data-front-lamp-light src="assets/images/lamp-light-2.svg" alt=""></div></div>
+  </div>
+  <div class="project-interior" aria-hidden="true"></div>
+  <div id="petals" aria-hidden="true"></div>
+  <div id="petals-back" aria-hidden="true"></div>
+  <div class="transition-veil" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="MishGun — главная">MishGun</a>
+    <div class="audio-controls">
+      <button id="sound-toggle" class="sound-toggle" type="button" aria-pressed="false"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="sound-label">Включить музыку</span></button>
+      <input id="volume" type="range" min="0" max="1" step="0.01" value="0.22" aria-label="Громкость музыки и эффектов">
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section id="home" class="home" data-layout-ready="false" aria-label="Главная">
+      <div class="home-left">
+        <h1>Между кодом<br>и <em>стихами.</em></h1>
+      </div>
+      <div class="wheel-wrap">
+        <div class="wheel" id="wheel" role="group" aria-label="Колесо разделов. Вращайте перетаскиванием или стрелками. Видны три раздела.">
+          <svg id="wheel-disc" class="wheel-disc" viewBox="0 0 800 800" aria-hidden="true"></svg>
+          <div id="wheel-items"></div>
+        </div>
+        <span class="wheel-pointer" aria-hidden="true"><svg viewBox="0 0 38 34"><path d="M33 3 5 17 33 31Z"/></svg></span>
+        <span id="section-counter" class="wheel-counter" aria-label="Раздел 1 из 6">1/6</span>
+      </div>
+      <div class="wheel-selection">
+        <div class="selection-copy">
+        <button type="button" id="selected-label" aria-live="polite">Мой путь</button>
+        <p id="selected-caption">семь остановок обо мне</p>
+        </div>
+        <div class="wheel-controls"><button id="previous-section" type="button" aria-label="Предыдущий раздел"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4m-4 4 4-4 4 4"/></svg></button><button id="next-section" type="button" aria-label="Следующий раздел"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12m-4-4 4 4 4-4"/></svg></button></div>
+      </div>
+      <div class="home-right"><figure class="portrait"><span class="photo-tape" aria-hidden="true"></span><img src="assets/images/hero-reference.jpg" width="736" height="736" alt="Аниме-иллюстрация: двое обнимаются в мягком розовом свете"><figcaption><span>Здесь немного обо мне</span><span aria-hidden="true">♡</span></figcaption></figure></div>
+    </section>
+    <section id="section-view" class="section-view" hidden aria-labelledby="section-title">
+      <a class="back-link" href="#home">← Вернуться к колесу</a>
+      <div class="section-heading"><p id="section-kicker" class="eyebrow"></p><h1 id="section-title" tabindex="-1"></h1><p id="section-note"></p></div>
+      <div id="section-content"></div>
+      <nav id="section-nav" class="section-nav" aria-label="Другие разделы"></nav>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span class="footer-year">© 2026 MishGun</span></footer>
+  <audio id="background-audio" src="assets/audio/flowers.mp3" preload="none" loop></audio>
+  <p id="audio-message" class="audio-message" role="status"></p>
+
+  <dialog id="welcome" class="welcome-dialog" aria-labelledby="welcome-title"><form method="dialog"><span class="welcome-flower" aria-hidden="true"><svg viewBox="0 0 64 64" width="58" height="58" fill="none"><g fill="#e7b6c7" stroke="#b87390" stroke-width="1.2"><ellipse cx="32" cy="18" rx="10" ry="16"/><ellipse cx="32" cy="18" rx="10" ry="16" transform="rotate(72 32 32)"/><ellipse cx="32" cy="18" rx="10" ry="16" transform="rotate(144 32 32)"/><ellipse cx="32" cy="18" rx="10" ry="16" transform="rotate(216 32 32)"/><ellipse cx="32" cy="18" rx="10" ry="16" transform="rotate(288 32 32)"/></g><circle cx="32" cy="32" r="5" fill="#fff4de"/></svg></span><p class="eyebrow">Личный сад MishGun</p><h2 id="welcome-title">Рад, что ты здесь.</h2><p>Здесь есть немного музыки.<br>С ней или в тишине — выбирай.</p><button id="enter-sound" class="primary-button" type="button">Войти со звуком <span aria-hidden="true">♫</span></button><button id="enter-silent" class="quiet-button" type="button">Пока в тишине →</button></form></dialog>
+  <dialog id="poem-dialog" class="poem-dialog" aria-labelledby="poem-title"><div class="poem-reader-bar"><span aria-hidden="true">Письмо из сада</span><button class="dialog-close" type="button" aria-label="Закрыть стихотворение"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"/></svg></button></div><div class="poem-reader-page"><div class="poem-letter-heading"><div><p id="poem-date" class="eyebrow"></p><h2 id="poem-title"></h2></div></div><div id="poem-body" class="poem-body"></div><p class="poem-signature">Борознов Михаил</p></div></dialog>
+  <noscript><p class="no-script">Для вращения колеса и переходов включите JavaScript в браузере.</p></noscript>
+  <dialog id="achievement-dialog" class="achievement-dialog" aria-labelledby="achievement-dialog-title" aria-describedby="achievement-dialog-note">
+    <header class="achievement-dialog-header"><div><h2 id="achievement-dialog-title"></h2><p id="achievement-dialog-note"></p></div><button type="button" class="achievement-dialog-close" data-document-close aria-label="Закрыть документ"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"/></svg></button></header>
+    <div class="achievement-image-stage" tabindex="0" role="region" aria-label="Изображение документа; при увеличении его можно прокручивать"><img id="achievement-full-image" width="1600" height="1600" alt=""><p id="achievement-image-error" role="status" hidden>Не удалось загрузить изображение. Попробуй открыть оригинал по ссылке ниже или обновить страницу.</p></div>
+    <footer class="achievement-dialog-footer"><div class="achievement-document-controls"><button type="button" data-document-prev aria-label="Предыдущий документ"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12 5-5 5 5 5"/></svg></button><p id="achievement-dialog-position" aria-live="polite"></p><button type="button" data-document-next aria-label="Следующий документ"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m8 5 5 5-5 5"/></svg></button></div><div class="achievement-document-actions"><button type="button" data-document-zoom aria-pressed="false">Увеличить</button><a id="achievement-image-link" target="_blank" rel="noopener noreferrer">Открыть изображение отдельно</a></div></footer>
+  </dialog>
+</body>
+</html>

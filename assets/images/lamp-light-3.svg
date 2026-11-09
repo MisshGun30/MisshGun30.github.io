@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200"><defs>
+    <radialGradient id="lantern-halo"><stop stop-color="#ffe3a3" stop-opacity=".8"/><stop offset=".35" stop-color="#ffe6b3" stop-opacity=".4"/><stop offset="1" stop-color="#ffe7bd" stop-opacity="0"/></radialGradient>
+    <radialGradient id="lantern-pool"><stop stop-color="#ffe2a1" stop-opacity=".7"/><stop offset=".55" stop-color="#ffe9bd" stop-opacity=".32"/><stop offset="1" stop-color="#fff1d6" stop-opacity="0"/></radialGradient>
+    <linearGradient id="garden-lantern-beam" x2="0" y2="1"><stop stop-color="#ffe6ae" stop-opacity=".3"/><stop offset="1" stop-color="#fff0ca" stop-opacity="0"/></linearGradient>
+    <radialGradient id="lantern-bulb-glow"><stop stop-color="#fffbdc"/><stop offset=".45" stop-color="#ffe5a5" stop-opacity=".9"/><stop offset="1" stop-color="#ffdfa0" stop-opacity="0"/></radialGradient>
+  </defs><g id="path-lantern-3" class="garden-lantern street-lantern" data-side="left" transform="translate(625 1180) scale(0.78)"><defs><linearGradient id="street-beam-2" gradientUnits="userSpaceOnUse" x1="112" y1="-266" x2="303.8461538461538" y2="-44.87179487179487"><stop stop-color="#ffe3a2" stop-opacity=".24"/><stop offset=".65" stop-color="#ffe9b5" stop-opacity=".12"/><stop offset="1" stop-color="#fff0ca" stop-opacity="0"/></linearGradient></defs><g class="lamp-emission" data-lamp-light="path-3">
+      <path d="M104 -262Q223.8461538461538 -89.87179487179486 158.8461538461538 -44.87179487179487Q303.8461538461538 5.128205128205131 448.8461538461538 -44.87179487179487Q383.8461538461538 -89.87179487179486 120 -262Z" fill="url(#street-beam-2)"/>
+      <ellipse cx="303.8461538461538" cy="-44.87179487179487" rx="160" ry="38" fill="url(#lantern-pool)"/>
+      <ellipse cx="112" cy="-266" rx="56" ry="48" fill="url(#lantern-halo)"/>
+    </g><g class="lamp-emission"><g transform="translate(112 -266) rotate(-12)"><ellipse cy="3" rx="34" ry="15" fill="url(#lantern-bulb-glow)"/><rect x="-21" y="1" width="42" height="4" rx="2" fill="#fffbdc"/><path d="M-16 3H16" stroke="#ffe5a1" stroke-width="1"/></g></g></g></svg>

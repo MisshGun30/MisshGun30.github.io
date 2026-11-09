@@ -1,0 +1,175 @@
+/* Крупный план той же сакуры. Стили главной остаются в home.css. */
+.is-physics-visible .poem-pendant { will-change: transform, rotate; }
+.is-physics-visible .poem-card { will-change: rotate; }
+
+html:has(body.in-poems) { scrollbar-gutter: stable; }
+body.in-poems { overflow-x: clip; }
+body.in-poems :is(.garden > img, .home-lantern-plane) { transform: scale(1.5); transform-origin: 76% 25%; opacity: .58; filter: blur(2px); }
+body.in-poems .garden-haze { background: linear-gradient(180deg,#fff9f7bd 0%,#fff9f7a6 42%,#fff9f7db 100%); }
+body.in-poems .section-view { max-width: 1600px; padding: 22px 5.5% 48px; }
+body.in-poems .back-link { margin-bottom: 26px; }
+body.in-poems .section-heading { max-width: 850px; margin: 0 0 10px; }
+body.in-poems .section-heading .eyebrow { margin-bottom: 12px; }
+body.in-poems .section-heading h1 { font-size: clamp(42px,5vw,68px); }
+body.in-poems .section-heading > p:last-child { margin-top: 16px; }
+body.in-poems .section-nav { margin-top: 40px; }
+.poetry-garden { --rope: #355e66; position: relative; padding: 54px 0 16px; }
+.poetry-row { position: relative; display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,340px),1fr)); gap: 36px 42px; align-items: start; padding: 0 8px 30px; }
+.poetry-branch { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; filter: drop-shadow(2px 5px 4px #80526814); }
+.poem-hanging { position: relative; min-width: 0; padding-top: var(--anchor); }
+.poem-drop { position: relative; transform-origin: 50% 0; }
+.poem-visibility-marker { position: absolute; top: calc(var(--anchor) + var(--thread) + 24px); left: 0; width: 100%; height: 72px; pointer-events: none; }
+.branch-trigger { position: absolute; left: 0; width: 100%; height: 120px; pointer-events: none; }
+.poem-branch-knot { position: absolute; left: var(--tie-x); top: var(--anchor); width: 0; height: 0; }
+.poem-pendant { position: relative; padding-top: var(--thread); transform-origin: var(--tie-x) 0; animation: leaf-breeze var(--breeze-duration) var(--breeze-delay) ease-in-out infinite; }
+.poem-thread { position: absolute; left: var(--tie-x); top: 0; width: 1.4px; height: calc(var(--thread) + var(--hole-depth,13px)); pointer-events: none; }
+.poem-thread::after { content: ''; position: absolute; top: calc(var(--coil) / 2 - 1px); bottom: 0; left: 0; width: 1.4px; background: var(--rope); }
+.thread-wrap { position: absolute; top: calc(var(--coil) / -2); left: -8px; width: 16px; height: var(--coil); overflow: visible; fill: none; stroke: var(--rope); stroke-width: 1.65; stroke-linecap: round; }
+@keyframes leaf-breeze { 0%,100% { transform: rotate(calc(var(--rope-angle,0deg) - var(--sway))); } 50% { transform: rotate(calc(var(--rope-angle,0deg) + var(--sway))); } }
+.poem-hanging.is-reader-source .poem-pendant { animation-play-state: paused; }
+.poetry-afterword { max-width: 620px; margin: 24px auto 8px; padding: 10px 0; text-align: center; color: var(--muted); font-size: 14px; line-height: 1.95; }
+.poetry-afterword .text-link { display: inline-block; margin-top: 12px; }
+.poem-paper-space { position: relative; }
+.paper-point { position: absolute; width: 0; height: 0; pointer-events: none; }
+.paper-point--a { left: 0; top: 0; }.paper-point--b { left: 100%; top: 0; }.paper-point--c { left: 0; top: 100%; }
+.poem-card {
+  display: flex; flex-direction: column; position: absolute; width: 100%; min-height: 328px;
+  margin: 0 !important; padding: 37px 25px 26px; text-align: left;
+  color: var(--ink); background: none; border: 0; isolation: isolate;
+  clip-path: none; box-shadow: none; filter: drop-shadow(5px 10px 12px #8052681b);
+  transform: rotate(calc(var(--rest-angle,0deg) + var(--wind-angle,0deg))); transform-origin: var(--paper-tie) 13px;
+  transition: opacity .2s;
+}
+.paper-light { position: absolute; top: 33px; left: 1px; right: 1px; height: 72px; z-index: -1; pointer-events: none; background: linear-gradient(168deg,transparent 34%,#74586a12 37%,transparent 42%),linear-gradient(148deg,transparent 10%,#74586a0c 13%,transparent 17%); filter: blur(3px); }
+.paper-watermark { position: absolute; inset: 0; overflow: hidden; z-index: -1; pointer-events: none; clip-path: var(--paper-edge,inset(0 round 4px)); }
+.paper-watermark svg { position: absolute; width: 105%; right: -27%; top: 32%; opacity: .075; transform: rotate(-7deg); }
+.poem-card::before { content: ''; position: absolute; inset: 0; z-index: -1; border: 1px solid #c4a1b545; border-radius: 2px 5px 3px 6px; background: url('assets/images/paper-fibers.svg'),radial-gradient(ellipse at 8% 0%,#f4d9e12b,transparent 65%),radial-gradient(ellipse at 95% 100%,#edbdd025,transparent 60%),var(--paper-tone,#fffcf8); clip-path: var(--paper-edge,polygon(0 .2%,23% 0,52% .15%,78% 0,99.8% .2%,100% 32%,99.8% 65%,100% 99.8%,73% 100%,44% 99.8%,.2% 100%,0 68%,.2% 35%)); mask-image: radial-gradient(circle at var(--paper-tie) 13px,transparent 0 3.5px,#000 4px); }
+.poem-card::after { content: none; }
+.poem-hanging:nth-child(3n) { --paper-tone: #fff5f3; }
+.poem-hanging:nth-child(3n + 2) { --paper-tone: #fcf8ef; }
+.poem-hanging:nth-child(3n + 2) { --paper-edge: polygon(0 0,100% .3%,99.6% 43%,100% 77%,99% 99.7%,85% 100%,84% 98.9%,83% 100%,61% 99.4%,39% 100%,21% 99.4%,0 100%,.4% 62%); }
+.poem-hanging:nth-child(3n) { --paper-edge: polygon(.2% 0,88% .4%,100% 0,99.7% 38%,100% 72%,99.4% 92%,96% 100%,66% 99.6%,34% 100%,0 99.4%,.4% 41%); }
+.paper-fold { position: absolute; right: 0; bottom: 0; width: 15px; height: 15px; background: linear-gradient(135deg,#d7bec044,#fffaf3 58%); clip-path: polygon(0 100%,0 0,100% 100%); filter: drop-shadow(-1px -1px 1px #75536322); pointer-events: none; }
+.paper-tie { position: absolute; top: -2px; left: calc(var(--paper-tie) - 12px); width: 24px; height: 32px; overflow: visible; pointer-events: none; }
+.paper-tie circle { fill: none; stroke: #baa1ae; stroke-width: .8; }
+.paper-tie path { fill: none; stroke: var(--rope); stroke-width: 1.45; stroke-linecap: round; }
+.poem-card .eyebrow { display: block; width: 100%; padding-bottom: 12px; border-bottom: 1px solid #bd9e9b40; font-size: 10px; letter-spacing: 1.8px; color: #927983; }
+.poem-card-heading { width: 100%; margin-top: 18px; }
+.poem-card h2 { font: 28px/1.2 var(--serif); margin: 0; letter-spacing: -.6px; }
+.poem-miniature { display: block; width: 100%; height: auto; overflow: visible; }
+.poem-flight-paper { contain: layout style; backface-visibility: hidden; }
+.untitled-mark { display: inline-block; font-size: 25px; letter-spacing: 5px; color: #ac7f91; }
+.poem-preview { margin-top: 18px; white-space: pre-line; font: 17px/1.8 var(--serif); color: #715965; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden; }
+.poem-card-bottom { display: flex; flex-wrap: wrap; width: 100%; justify-content: space-between; align-items: end; gap: 12px; margin-top: auto; padding-top: 25px; }
+.poem-card .read-more { margin: 0; color: #97677b; font-size: 10px; }
+.read-more > span { display: inline-block; margin-left: 5px; }
+.leaf-signature { margin-left: auto; white-space: nowrap; font: italic 16px/1.25 'Segoe Print','Bradley Hand',var(--serif); color: #9b7488; transform: rotate(-3deg); }
+@media (hover:hover) { .poem-card:hover { transform: rotate(calc(var(--rest-angle,0deg) + var(--wind-angle,0deg))); box-shadow: none; filter: drop-shadow(6px 13px 14px #80526826); } }
+.poem-card.is-reading { opacity: 0; pointer-events: none; transition: none; }
+.poem-card:focus-visible { outline: 2px solid var(--rose); outline-offset: 5px; }
+
+/* Большой ровный лист для чтения. Закрытие доступно при любой прокрутке. */
+.poem-dialog { width: 740px; max-width: calc(100% - 32px); max-height: 88svh; padding: 0; border: 1px solid #c8b0a25c; border-radius: 2px; background-color: #fffcf5; background-image: url('assets/images/paper-fibers.svg'); overscroll-behavior: contain; transform-origin: 0 0; }
+.poem-dialog.has-paper-flight { background-color: transparent; background-image: none; border-color: transparent; box-shadow: none; scrollbar-color: transparent transparent; }
+.poem-flight-paper { position: fixed !important; left: 0 !important; top: 0 !important; margin: 0 !important; min-height: 0 !important; z-index: 3; pointer-events: none !important; transform-origin: 0 0 !important; transition: none !important; will-change: transform,opacity; }
+.poem-dialog::backdrop { background: #4d354859; backdrop-filter: blur(9px); }
+.poem-dialog[open]::backdrop { animation: reader-backdrop-in 1.05s ease both; }
+.poem-dialog.is-closing::backdrop { animation: reader-backdrop-out .4s ease both; }
+@keyframes reader-backdrop-in { from { background: #4d354800; backdrop-filter: blur(0); } to { background: #4d354859; backdrop-filter: blur(9px); } }
+@keyframes reader-backdrop-out { from { background: #4d354859; backdrop-filter: blur(9px); } to { background: #4d354800; backdrop-filter: blur(0); } }
+.poem-reader-bar { position: sticky; top: 0; z-index: 1; display: flex; justify-content: space-between; align-items: center; min-height: 58px; padding: 8px 18px 8px 46px; background: #fffcf5f5; border-bottom: 1px solid #b28b9b20; }
+.poem-reader-bar > span { font: italic 14px var(--serif); color: #a58191; }
+.poem-reader-bar .dialog-close { position: static; display: grid; place-items: center; padding: 0; width: 40px; height: 40px; flex: none; border: 1px solid #bd9e9b55; border-radius: 50%; }
+.dialog-close svg { display: block; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; }
+.poem-reader-page { position: relative; isolation: isolate; padding: 28px 52px 42px; background: linear-gradient(94deg,transparent 48%,#b794a208 50%,transparent 52%); }
+.poem-letter-heading { margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px solid #b28b9b24; }
+.poem-dialog h2 { margin: 17px 0 0; font-size: clamp(27px,4.5vw,37px); text-wrap: balance; }
+.poem-letter-heading .eyebrow { font-size: 10px; letter-spacing: 1.6px; }
+.poem-body { display: flex; flex-direction: column; gap: 1.95em; white-space: normal; font: 19px/1.95 var(--serif); overflow-wrap: anywhere; }
+.poem-scene { position: relative; isolation: isolate; display: flex; flex-direction: column; gap: 1.95em; }
+.poem-stanza { position: relative; isolation: isolate; }
+.poem-stanza-text { margin: 0; white-space: pre-wrap; font: inherit; }
+.poem-scene-art { position: absolute; inset: -8px -52px -8px 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.poem-scene-art svg { position: absolute; width: 560px; max-width: 90%; height: 100%; right: 0; top: 0; opacity: .13; transform: rotate(-4deg); }
+.poem-scene:first-child .poem-scene-art svg { width: 490px; max-width: 80%; right: -12%; }
+.poem-scene:nth-child(even) .poem-scene-art svg { transform: rotate(3deg); }
+.poem-signature { margin-top: 34px; text-align: right; font-family: 'Segoe Print','Bradley Hand',var(--serif); }
+body.poem-petals-paused .petal { animation-play-state: paused; }
+.poem-thread { transform-origin: 50% 0; }
+
+@media (max-width: 1100px) {
+  .poem-hanging { --thread: 58px !important; }
+  .poem-card { min-height: 330px; padding-inline: 22px; }
+  body.in-poems .section-heading { max-width: 820px; }
+}
+@media (max-width: 620px) {
+  body.in-poems .section-view { padding: 18px 7% 36px; }
+  body.in-poems .section-heading { margin-bottom: 8px; }
+  body.in-poems .section-heading h1 { font-size: clamp(37px,9.8vw,50px); }
+  body.in-poems .section-heading > p:last-child { max-width: 280px; font-size: 12px; line-height: 1.8; }
+  .poetry-garden { padding-top: 45px; }
+  .poetry-row { gap: 18px; padding: 0 9px 20px; }
+  .poem-hanging { --thread: 42px !important; }
+  .poetry-afterword { margin-top: 14px; padding-inline: 12px; font-size: 13px; text-align: left; }
+  .poem-card { min-height: 0; padding: 32px 18px 24px; }
+  .poem-card h2 { font-size: 25px; }
+  .poem-preview { font-size: 16px; line-height: 1.8; }
+  .leaf-signature { font-size: 13px; }
+  .poem-card .eyebrow { font-size: 10px; }
+  .poem-reader-bar { padding: 7px 12px 7px 23px; }
+  .poem-reader-page { padding: 19px 23px 30px; }
+  .poem-letter-heading { margin-bottom: 22px; padding-bottom: 18px; }
+  .poem-scene-art { right: -23px; }
+  .poem-scene-art svg { width: 110%; max-width: none; right: 0; opacity: .075; }
+  .poem-scene:first-child .poem-scene-art svg { width: 110%; max-width: none; right: -28%; }
+  .poem-letter-heading .eyebrow { font-size: 9px; letter-spacing: 1px; }
+  .poem-dialog { max-width: calc(100% - 20px); max-height: 91svh; }
+  .poem-body { font-size: 17px; line-height: 1.85; }
+}
+@media (max-width: 380px) {
+  .poem-card h2 { font-size: 22px; }
+  .poem-preview { font-size: 15px; }
+  .leaf-signature { font-size: 10px; }
+}
+/* Уход панелей задаётся через translate, сохраняя их обычные transform и размеры. */
+body.home-is-leaving #home { pointer-events: none; }
+body.poems-is-leaving #section-view,body.arriving-at-home #home { pointer-events: none; }
+body.in-poems .section-view.entering .section-heading { animation: arrive-at-branch .8s .25s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes arrive-at-branch { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* Две половины ствола вырастают навстречу друг другу из-за краёв экрана. */
+.branch-stem-half { transform-box: fill-box; }
+.branch-stem-left { clip-path: inset(0 50% 0 0); }
+.branch-stem-right { clip-path: inset(0 0 0 50%); }
+.branch-level[data-growth=left] .branch-stem-left,.branch-level[data-growth=right] .branch-stem-right { clip-path: inset(0); }
+.branch-level[data-growth=left] .branch-stem-right,.branch-level[data-growth=right] .branch-stem-left { display: none; }
+.offshoot-stem { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.branch-bloom { transform-box: fill-box; transform-origin: 50% 70%; }
+.is-staged .branch-level:not(.is-seen):not(.is-growing) .branch-stem-left { clip-path: inset(0 100% 0 0); }
+.is-staged .branch-level:not(.is-seen):not(.is-growing) .branch-stem-right { clip-path: inset(0 0 0 100%); }
+.is-staged .branch-level:not(.is-seen) .offshoot-stem { stroke-dashoffset: 1; }
+.is-staged .branch-level:not(.is-seen) .branch-bloom { opacity: 0; transform: scale(.08); }
+.branch-level.is-growing .branch-stem-left { animation: stem-grow-left .7s cubic-bezier(.2,.6,.3,1) both; }
+.branch-level.is-growing .branch-stem-right { animation: stem-grow-right .7s cubic-bezier(.2,.6,.3,1) both; }
+.branch-level.is-growing[data-growth=left] .branch-stem-left { animation-name: stem-grow-from-left; }
+.branch-level.is-growing[data-growth=right] .branch-stem-right { animation-name: stem-grow-from-right; }
+.branch-level.is-growing .offshoot-stem { animation: twig-grow .3s var(--twig-delay) ease-out both; }
+.branch-level.is-growing .branch-bloom { animation: blossom-open .4s var(--bloom-delay) cubic-bezier(.2,.7,.3,1) both; }
+@keyframes stem-grow-left { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 50% 0 0); } }
+@keyframes stem-grow-right { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 50%); } }
+@keyframes stem-grow-from-left { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0); } }
+@keyframes stem-grow-from-right { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0); } }
+@keyframes twig-grow { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes blossom-open { from { opacity: 0; transform: scale(.08) rotate(-12deg); } to { opacity: 1; transform: none; } }
+.is-staged .poem-hanging.is-pending .poem-drop { opacity: 0; pointer-events: none; transform: translateY(-24px) scaleY(.82); }
+.is-staged .poem-hanging.is-pending .poem-branch-knot { opacity: 0; }
+.poem-hanging.is-pending .poem-pendant,.poem-hanging.is-hanging .poem-pendant { animation-play-state: paused; }
+.poem-hanging.is-hanging .poem-drop { animation: paper-hang .76s cubic-bezier(.2,.7,.25,1) both; }
+.poem-hanging.is-hanging .poem-branch-knot { animation: knot-appear .3s both; }
+@keyframes paper-hang { from { opacity: 0; transform: translateY(-24px) scaleY(.82); } 65% { opacity: 1; transform: translateY(3px) scaleY(1.01); } to { opacity: 1; transform: none; } }
+@keyframes knot-appear { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .poem-card { transition: none; }
+  .poem-pendant,.poem-dialog[open]::backdrop,body.arriving-at-poems .section-view.entering .section-heading,
+  .branch-level *, .poem-hanging .poem-drop,.poem-hanging .poem-branch-knot { animation: none !important; }
+}

@@ -1,0 +1,96 @@
+.social-view .section-heading,
+.social-preparing .section-heading { display: none; }
+
+html:has(.social-view, .social-preparing) { scrollbar-gutter: stable; }
+
+#section-view.social-preparing[hidden] {
+  display: block !important;
+  position: absolute;
+  inset: 0 0 auto;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#home.social-returning[hidden] { display: block !important; }
+#home.social-returning,
+#home.social-returning :is(.home-right, .home-left, .wheel-wrap, .wheel-selection) { transition: none; }
+
+#section-view.social-returning {
+  position: absolute;
+  inset: 0 0 auto;
+  pointer-events: none;
+}
+
+.social-returning .social-card { visibility: hidden; }
+
+.social-card {
+  width: min(100%, 640px);
+  margin-inline: auto;
+  padding: clamp(17px, 4vw, 40px);
+  color: var(--ink);
+  background: url('assets/images/paper-fibers.svg'), linear-gradient(145deg, #fffdfa 45%, #faedf0);
+  border: 1px solid #d9b7c3;
+  box-shadow: 0 14px 44px #77536523, 0 2px 4px #77536510;
+}
+
+.social-card h1 {
+  margin: 0 0 20px;
+  font: clamp(32px, 5vw, 52px)/1.1 var(--serif);
+  letter-spacing: -.045em;
+  outline: none;
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  min-height: 53px;
+  padding: 6px 8px;
+  border-top: 1px solid var(--line);
+  color: #743d55;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.social-links a:hover, .social-links a:focus-visible { background: #f5dfe8; }
+.social-links small { display: block; margin-top: 3px; color: #715363; font-size: 12px; }
+
+.social-portrait-detached { visibility: hidden; }
+.social-portrait-detached .photo-tape { visibility: visible; }
+
+.social-flip {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.social-flip > * { position: absolute; backface-visibility: hidden; }
+
+.social-flip .social-flip-front {
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin: 0;
+  padding: 0;
+  translate: -50% -50%;
+}
+
+.social-flip-front .portrait { transform: none; }
+.social-flip-back { inset: 0; margin: 0; transform: rotateY(180deg); }
+
+@media (max-width: 540px) {
+  .social-links { grid-template-columns: 1fr; gap: 0; }
+  .social-links a { min-height: 47px; }
+}

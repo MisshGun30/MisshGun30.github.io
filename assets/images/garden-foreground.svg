@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200"><defs>
+    <radialGradient id="lantern-halo"><stop stop-color="#ffe3a3" stop-opacity=".8"/><stop offset=".35" stop-color="#ffe6b3" stop-opacity=".4"/><stop offset="1" stop-color="#ffe7bd" stop-opacity="0"/></radialGradient>
+    <radialGradient id="lantern-pool"><stop stop-color="#ffe2a1" stop-opacity=".7"/><stop offset=".55" stop-color="#ffe9bd" stop-opacity=".32"/><stop offset="1" stop-color="#fff1d6" stop-opacity="0"/></radialGradient>
+    <linearGradient id="garden-lantern-beam" x2="0" y2="1"><stop stop-color="#ffe6ae" stop-opacity=".3"/><stop offset="1" stop-color="#fff0ca" stop-opacity="0"/></linearGradient>
+    <radialGradient id="lantern-bulb-glow"><stop stop-color="#fffbdc"/><stop offset=".45" stop-color="#ffe5a5" stop-opacity=".9"/><stop offset="1" stop-color="#ffdfa0" stop-opacity="0"/></radialGradient>
+  </defs><g id="path-lantern-2" class="garden-lantern street-lantern" data-side="right" transform="translate(1018 1100) scale(0.6)">
+    <defs><linearGradient id="street-beam-1" gradientUnits="userSpaceOnUse" x1="-112" y1="-266" x2="-135" y2="-65"><stop stop-color="#ffe3a2" stop-opacity=".24"/><stop offset=".65" stop-color="#ffe9b5" stop-opacity=".12"/><stop offset="1" stop-color="#fff0ca" stop-opacity="0"/></linearGradient></defs>
+    
+    <g opacity=".67" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-15 0H15L9-10H-9Z" fill="#b7a2a9"/>
+      <path d="M-5-8V-242Q-5-248 3-250L-88 -272" fill="none" stroke="#a48a98" stroke-width="8"/>
+      <path d="M-2-12V-240" fill="none" stroke="#d5bdc5" stroke-width="2"/>
+      <path d="M-7-74H7M-7-80H7" stroke="#b69ca8" stroke-width="3"/>
+      <g transform="translate(-112 -266) rotate(12)"><rect x="-29" y="-10" width="58" height="13" rx="6" fill="#9b8290"/><path d="M-24-5H24" stroke="#cdb4bf" stroke-width="2"/></g>
+    </g>
+    
+  </g></svg>

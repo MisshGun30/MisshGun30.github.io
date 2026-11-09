@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/* Внутри портфолио вся сцена — поверхность доски, без дальнего плана сада. */
+body.in-portfolio { background:#d8bfae url('assets/images/portfolio-cork.svg'); border:10px solid #b49486; }
+.in-portfolio .garden { visibility:hidden; }
+.in-portfolio .achievements-view { --achievement-muted:#5d434d; --achievement-line:#b99b8c; }
+.in-portfolio .back-link, .in-portfolio .section-nav a, .in-portfolio .site-footer { color:#5d434d; }
+.in-portfolio .back-link:hover, .in-portfolio .section-nav a:hover { color:#452f3a; }
+.in-portfolio .section-nav a[aria-current=page] { color:#71374b; }
+.in-portfolio .achievement-archive-open, .in-portfolio .achievement-drive-link { color:#71374b; }
+.in-portfolio .achievement-gallery.achievement-board { padding:0; margin-inline:0; border:0; border-radius:0; background:transparent; box-shadow:none; }
+.in-portfolio .achievement-title { font:25px/1.2 var(--serif); letter-spacing:-.02em; text-wrap:balance; overflow-wrap:anywhere; hyphens:auto; }
+.in-portfolio .achievement-selection > .achievement-section-heading p { margin-top:0; }
+
+.portfolio-light-stage { position:fixed; inset:0; z-index:8; overflow:hidden; pointer-events:none; }
+.portfolio-weather-canvas, .portfolio-storm-flash { position:absolute; inset:0; width:100%; height:100%; }
+.portfolio-weather-canvas { z-index:4; }
+.portfolio-storm-flash { background:#fff; opacity:0; z-index:6; }
+.portfolio-falling-tree { position:absolute; opacity:0; z-index:1; filter:drop-shadow(0 10px 14px #41313a25); }
+.portfolio-falling-tree { will-change: transform, opacity; backface-visibility: hidden; }
+.portfolio-canopy-cover { will-change: clip-path, opacity; }
+.portfolio-falling-tree img { position:absolute; inset:0; width:100%; height:100%; }
+.portfolio-tree-world { position:absolute; inset:0; z-index:1; perspective-origin:50% 50%; }
+.portfolio-canopy-cover { position:absolute; inset:0; background:#e8bdcf url('assets/images/portfolio-tree-canopy.svg') center/cover; opacity:0; z-index:2; }
+.portfolio-tree-fracture { position:absolute; inset:0; width:100%; height:100%; opacity:0; z-index:3; overflow:visible; }
+.portfolio-tree-fracture > path { fill:none; stroke:#49323b; stroke-width:4; stroke-linejoin:round; stroke-dasharray:1; stroke-dashoffset:1; }
+.portfolio-lightning { position:absolute; inset:0; width:100%; height:100%; opacity:0; z-index:5; filter:drop-shadow(0 0 9px #b9d9ff); }
+.portfolio-lightning path { fill:none; stroke:#e7f3ff; stroke-width:3; stroke-linejoin:round; stroke-linecap:round; stroke-dasharray:1; stroke-dashoffset:1; }
+@media (max-width:600px) {
+  body.in-portfolio { border-width:7px; }
+  .in-portfolio .achievement-title { font-size:clamp(23px,6vw,26px); }
+}
