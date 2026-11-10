@@ -470,8 +470,13 @@ function layoutHome() {
   const home = $('#home');
   if (home.hidden && !home.classList.contains('social-returning')) return;
   const width = home.clientWidth;
-  const heightLimit = width >= 1100 ? (document.documentElement.clientHeight - $('.site-header').offsetHeight - 24) / 980 : Infinity;
-  const scale = Math.min(1.1, .48 + width / 2800, (width - 24) / 650, heightLimit) * (width < 760 ? .92 : 1);
+  const desktop = width >= 1000;
+  const availableHeight = document.documentElement.clientHeight - $('.site-header').offsetHeight - $('.site-footer').offsetHeight;
+  // На широком экране масштаб ограничивает весь доступный экран, включая footer.
+  // Заголовок с карточкой и колесо центрируются независимо, освобождая место.
+  const heightLimit = desktop ? availableHeight / 850 : Infinity;
+  const widthLimit = desktop ? (width - 32) / 1240 : Infinity;
+  const scale = Math.min(1.1, .48 + width / 2800, (width - 24) / 650, heightLimit, widthLimit) * (width < 760 ? .92 : 1);
   const diameter = 800 * scale;
   const visible = diameter * .45;
   const cardWidth = diameter * .67;
@@ -499,7 +504,10 @@ function layoutHome() {
   const cardHeading = home.dataset.headingLayout === 'card';
   const titleHeight = $('.home-left').getBoundingClientRect().height;
   const introBottom = $('.home-left').getBoundingClientRect().bottom - home.getBoundingClientRect().top;
-  const cardCenter = cardHeading
+  const fitViewport = desktop && progress === 0 && cardHeading;
+  const cardCenter = fitViewport
+    ? (availableHeight + titleHeight + 24 * scale) / 2
+    : cardHeading
     ? Math.max(titleHeight + 24 * scale + card.height / 2 + 28 * scale, diameter / 2 + 28 * scale)
     : introBottom + 36 * scale + Math.max(diameter / 2, card.height / 2);
   const fullDrop = card.height / 2 + diameter / 2 + 44 * scale;
@@ -508,12 +516,12 @@ function layoutHome() {
   // Первые 10px сближения освобождают место для текста, затем опускается весь диск.
   const clearProgress = Math.max(0, Math.min(1, (10 - textGap) / 10));
   const clearEased = clearProgress * clearProgress * (3 - 2 * clearProgress);
-  const wheelCenter = cardCenter + clearEased * clearDrop + eased * (fullDrop - clearDrop);
+  const wheelCenter = fitViewport ? availableHeight / 2 : cardCenter + clearEased * clearDrop + eased * (fullDrop - clearDrop);
   home.style.setProperty('--card-left', `${cardLeft}px`);
   home.style.setProperty('--card-center', `${cardCenter}px`);
   home.style.setProperty('--heading-top', `${cardCenter - card.height / 2 - titleHeight - 24 * scale}px`);
   home.style.setProperty('--wheel-center', `${wheelCenter.toFixed(3)}px`);
-  home.style.setProperty('--scene-height', `${Math.ceil(Math.max(cardCenter + card.height / 2, wheelCenter + diameter / 2) + 46 * scale)}px`);
+  home.style.setProperty('--scene-height', `${fitViewport ? availableHeight : Math.ceil(Math.max(cardCenter + card.height / 2, wheelCenter + diameter / 2) + 46 * scale)}px`);
   home.dataset.stackProgress = progress.toFixed(3);
   home.dataset.textGap = textGap.toFixed(2);
   home.dataset.maxSelectionWidth = textBounds.width.toFixed(2);
