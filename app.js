@@ -299,7 +299,7 @@ async function renderRoute(initial = false) {
     $('#section-view').classList.add('entering');
   } else {
     $('#section-content').replaceChildren();
-    document.title = 'MishGun — между кодом и стихами';
+    document.title = 'Михаил Борознов (MishGun) — стихи, музыка и проекты';
   }
   window.scrollTo({ top:0, behavior:'instant' });
   cancelSocialFlip();
