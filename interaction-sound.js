@@ -1,3 +1,4 @@
+import { getVolume } from "./audio-volume.js";
 const buffers = new Map();
 let context;
 let active;
@@ -27,7 +28,7 @@ export function prepareInteractionSound(name) {
 export async function playInteractionSound(prepared, isCurrent) {
   const buffer = await prepared;
   if (!buffer || context.state !== 'running' || !isCurrent()) return;
-  const volume = document.querySelector('#background-audio').volume;
+  const volume = getVolume(document.querySelector('#background-audio'));
   if (!volume) return;
   const source = context.createBufferSource();
   const gain = context.createGain();

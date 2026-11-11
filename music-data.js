@@ -3,7 +3,7 @@
 // cover — путь к своей обложке; без неё остаётся рисованный конверт.
 export const musicTracks = [
   { id: 'beat-01', kind: 'beat', title: 'Fonk0ne', src: 'assets/audio/music/fonk0ne.mp3', cover: '', art: 'night-pulse', tone: 'rose' },
-  { id: 'beat-02', kind: 'beat', title: 'Трек бит 2', src: 'assets/audio/music/trek-bit-2.mp3', cover: '', art: 'orbit', tone: 'sage' },
+  { id: 'beat-02', kind: 'beat', title: 'Бит №2', src: 'assets/audio/music/trek-bit-2.mp3', cover: '', art: 'orbit', tone: 'sage' },
   { id: 'song-01', kind: 'song', title: 'Я тебя люблю', src: 'assets/audio/music/ya-tebya-lyublyu.mp3', cover: 'assets/images/ya-tebya-lyublyu-label.jpg', tone: 'lilac' }
 ];
 

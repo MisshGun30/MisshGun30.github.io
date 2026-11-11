@@ -1,3 +1,4 @@
+import { getVolume } from "./audio-volume.js";
 let context;
 const buffers = new Map();
 let pageSound;
@@ -25,8 +26,8 @@ export function projectSoundtrack(autoStop = false) {
   const audio = document.querySelector('#background-audio');
   let stopped = false;
   const output = engine?.createGain();
-  if (output) { output.gain.value = audio.volume * .55; output.connect(engine.destination); }
-  const update = () => { if (output) output.gain.setTargetAtTime(audio.volume * .55, engine.currentTime, .025); };
+  if (output) { output.gain.value = getVolume(audio) * .55; output.connect(engine.destination); }
+  const update = () => { if (output) output.gain.setTargetAtTime(getVolume(audio) * .55, engine.currentTime, .025); };
   audio.addEventListener('volumechange', update);
   function stop() {
     if (stopped) return;

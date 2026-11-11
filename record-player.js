@@ -1,3 +1,4 @@
+import { getVolume, setVolume, registerVolume, prepareVolume } from "./audio-volume.js";
 import { musicTracks } from './music-data.js';
 import { prepareInteractionSound, playInteractionSound } from './interaction-sound.js';
 
@@ -9,7 +10,7 @@ export function stopMusic(mode) { return leaveRoom(mode); }
 
 export function setupMusic(backgroundAudio) {
   const content = document.querySelector('#section-content');
-  const player = new Audio();
+  const player = new Audio(); registerVolume(player);
   player.preload = 'metadata';
   const find = selector => content.querySelector(selector);
   const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -156,8 +157,8 @@ export function setupMusic(backgroundAudio) {
     if (!selected || exiting) return;
     if (!backgroundAudio.paused) resumeBackground = true;
     backgroundAudio.pause();
-    player.volume = backgroundAudio.volume;
-    try { await player.play(); }
+    setVolume(player, getVolume(backgroundAudio));
+    try { prepareVolume(); await player.play(); }
     catch (error) {
       if (error.name !== 'AbortError' && find('.deck-message')) find('.deck-message').textContent = 'Не удалось включить запись. Нажми ▶ ещё раз.';
       if (!exiting) restoreBackground();
@@ -198,7 +199,7 @@ export function setupMusic(backgroundAudio) {
     if (saved && Number.isFinite(saved.time)) player.currentTime = Math.min(saved.time, Number.isFinite(player.duration) ? player.duration : saved.time);
     if (!exiting) {
       if(saved) {
-        if(saved.playing) { backgroundAudio.pause(); player.volume = backgroundAudio.volume; void resumeAudio(player, () => selected === track && !exiting); }
+        if(saved.playing) { backgroundAudio.pause(); setVolume(player, getVolume(backgroundAudio)); void resumeAudio(player, () => selected === track && !exiting); }
       } else await play();
     }
     if (!exiting && innerWidth <= 850) find('.turntable-panel').scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'nearest' });
@@ -325,5 +326,5 @@ export function setupMusic(backgroundAudio) {
     restoreBackground();
   });
   backgroundAudio.addEventListener('play', () => { resumeBackground = false; player.pause(); update(); });
-  backgroundAudio.addEventListener('volumechange', () => { player.volume = backgroundAudio.volume; });
+  backgroundAudio.addEventListener('volumechange', () => { setVolume(player, getVolume(backgroundAudio)); });
 }

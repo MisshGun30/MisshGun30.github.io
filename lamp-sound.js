@@ -1,3 +1,4 @@
+import { getVolume } from "./audio-volume.js";
 // Атмосферные эффекты независимы от фоновой музыки, громкость регулируется общим ползунком.
 let context;
 let soundRevision=0;
@@ -15,7 +16,7 @@ export function preloadJourneySounds() {
 let matchBuffer;
 
 export function prepareLampSound() {
-  if(audio().volume===0)return;
+  if(getVolume(audio())===0)return;
   const AudioEngine=window.AudioContext || window.webkitAudioContext;
   if(!AudioEngine)return;
   try {
@@ -26,7 +27,7 @@ export function prepareLampSound() {
 
 export function playLampSound(broken=false) {
   if(!context || context.state!=='running')return;
-  const now=context.currentTime,level=Math.min(.32,audio().volume*.8);
+  const now=context.currentTime,level=Math.min(.32,getVolume(audio())*.8);
   if(!level)return;
   const output=context.createGain();output.gain.value=level;output.connect(context.destination);
   let active=0;
@@ -71,7 +72,7 @@ export async function playMatchStrike() {
     matchBuffer??=await engine.decodeAudioData(bytes.slice(0));
     if(context!==engine || revision!==soundRevision)return;
     const source=engine.createBufferSource(),gain=engine.createGain();
-    source.buffer=matchBuffer;gain.gain.value=audio().volume;
+    source.buffer=matchBuffer;gain.gain.value=getVolume(audio());
     source.connect(gain);gain.connect(engine.destination);voices.add(source);
     source.onended=()=>{voices.delete(source);source.disconnect();gain.disconnect();};
     source.start();
@@ -90,7 +91,7 @@ function noise({duration,frequency,endFrequency=frequency,volume=.5,pulse=0}) {
   const source=context.createBufferSource(),filter=context.createBiquadFilter(),gain=context.createGain();
   source.buffer=buffer;filter.type='bandpass';filter.Q.value=1.3;
   filter.frequency.setValueAtTime(frequency,now);filter.frequency.exponentialRampToValueAtTime(endFrequency,now+duration);
-  gain.gain.value=audio().volume*volume;
+  gain.gain.value=getVolume(audio())*volume;
   source.connect(filter);filter.connect(gain);gain.connect(context.destination);voices.add(source);
   source.onended=()=>{voices.delete(source);source.disconnect();filter.disconnect();gain.disconnect();};
   source.start(now);source.stop(now+duration);
@@ -110,7 +111,7 @@ async function playReturnRecording(name) {
     recording.buffer??=await engine.decodeAudioData(bytes.slice(0));
     if(engine!==context || revision!==soundRevision)return 0;
     const source=engine.createBufferSource(),gain=engine.createGain();
-    source.buffer=recording.buffer;gain.gain.value=audio().volume;
+    source.buffer=recording.buffer;gain.gain.value=getVolume(audio());
     source.connect(gain);gain.connect(engine.destination);voices.add(source);
     source.onended=()=>{voices.delete(source);source.disconnect();gain.disconnect();};
     source.start();return recording.buffer.duration;

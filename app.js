@@ -1,3 +1,4 @@
+import { getVolume, setVolume, prepareVolume } from "./audio-volume.js";
 import { readAudioSession, saveAudioSession, resumeAudio } from './audio-session.js';
 import { musicMarkup, setupMusic, stopMusic, restoreMusic } from './music.js';
 import { projectsMarkup, setupProjects } from './projects.js';
@@ -373,16 +374,16 @@ function updateAudioState() {
 function message(text) { clearTimeout(audioMessageTimer); $('#audio-message').textContent = text; audioMessageTimer = setTimeout(() => { $('#audio-message').textContent = ''; }, 6000); }
 async function startAudio() {
   storage.set('garden-sound','on');
-  try { await audio.play(); }
+  try { prepareVolume(); await audio.play(); }
   catch { message('Не удалось включить музыку. Попробуй нажать на кнопку звука ещё раз.'); }
   updateAudioState();
 }
 const backgroundSession = readAudioSession('garden-background');
-audio.volume = Number.isFinite(backgroundSession?.volume) ? backgroundSession.volume : .22;
-$('#volume').value = audio.volume;
+setVolume(audio, Number.isFinite(backgroundSession?.volume) ? backgroundSession.volume : .22);
+$('#volume').value = getVolume(audio);
 if(Number.isFinite(backgroundSession?.time))audio.currentTime = backgroundSession.time;
 let lastBackgroundSave = 0;
-function saveBackground() { saveAudioSession('garden-background', {time:audio.currentTime,volume:audio.volume,playing:!audio.paused}); }
+function saveBackground() { saveAudioSession('garden-background', {time:audio.currentTime,volume:getVolume(audio),playing:!audio.paused}); }
 audio.addEventListener('timeupdate', () => { if(performance.now()-lastBackgroundSave>1000){lastBackgroundSave=performance.now();saveBackground();} });
 window.addEventListener('pagehide', saveBackground);
 audio.addEventListener('volumechange', saveBackground);
@@ -390,7 +391,7 @@ audio.addEventListener('play', updateAudioState);
 audio.addEventListener('pause', updateAudioState);
 audio.addEventListener('error', () => message('Музыка пока недоступна. Сад можно исследовать и в тишине.'));
 $('#sound-toggle').addEventListener('click', () => { if (audio.paused) startAudio(); else { audio.pause(); storage.set('garden-sound','off'); } });
-$('#volume').addEventListener('input', event => { audio.volume = Number(event.target.value); });
+$('#volume').addEventListener('input', event => { setVolume(audio, event.target.value); prepareVolume(); });
 $('#enter-sound').addEventListener('click', () => { storage.set('garden-entered','yes'); $('#welcome').close(); startAudio(); });
 $('#enter-silent').addEventListener('click', () => { storage.set('garden-entered','yes'); storage.set('garden-sound','off'); $('#welcome').close(); });
 $('#welcome').addEventListener('cancel', () => { storage.set('garden-entered','yes'); storage.set('garden-sound','off'); });

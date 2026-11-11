@@ -1,3 +1,4 @@
+import { prepareVolume } from "./audio-volume.js";
 export function readAudioSession(key) {
   try { return JSON.parse(sessionStorage.getItem(key) || 'null'); } catch { return null; }
 }
@@ -12,7 +13,7 @@ export function saveAudioSession(key, state) {
 // Safari может потребовать новое нажатие после перезагрузки документа.
 export async function resumeAudio(media, stillCurrent = () => true) {
   if (!stillCurrent()) return;
-  try { await media.play(); }
+  try { prepareVolume(); await media.play(); }
   catch (error) {
     if (error.name !== 'NotAllowedError' || !stillCurrent()) return;
     const controller = new AbortController();

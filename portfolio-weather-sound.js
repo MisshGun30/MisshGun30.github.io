@@ -1,3 +1,4 @@
+import { getVolume } from "./audio-volume.js";
 // Пользовательские записи: нормализация/обрезка выполнены в WAV-копиях.
 import { TREE_BREAK_SOUND_MS } from './portfolio-tree-motion.js';
 let context;
@@ -21,9 +22,9 @@ export function portfolioSoundtrack() {
   const audio=document.querySelector('#background-audio');
   let stopped=false,output;
   if(engine) {
-    output=engine.createGain();output.gain.value=audio.volume*.55;output.connect(engine.destination);
+    output=engine.createGain();output.gain.value=getVolume(audio)*.55;output.connect(engine.destination);
   }
-  const update=()=>{if(output)output.gain.setTargetAtTime(audio.volume*.55,engine.currentTime,.035);};
+  const update=()=>{if(output)output.gain.setTargetAtTime(getVolume(audio)*.55,engine.currentTime,.035);};
   audio.addEventListener('volumechange',update);
   const ready=()=>!stopped&&engine?.state==='running';
   const cue=action=>()=>{
